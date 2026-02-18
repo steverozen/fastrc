@@ -2,7 +2,8 @@
 
 Fast reverse complement of DNA and RNA sequences in R, implemented in C++ via Rcpp.
 
-`fastrc` uses a static lookup table for O(1) per-base complement mapping with full IUPAC ambiguity code support. It is **especially useful for reverse complementing many short sequences** (e.g. primers, probes, k-mers, short reads), where per-call overhead dominates and `fastrc` is over 100x faster than alternatives.
+`fastrc` uses a static lookup table for O(1) per-base complement mapping with full IUPAC ambiguity code support. It is **especially useful for reverse complementing many short sequences** (e.g. primers, probes, k-mers, short reads), where per-call overhead dominates and `fastrc` is nearly 100x faster than the implementation
+in `Biostrings`.
 
 ## Installation
 
@@ -42,7 +43,7 @@ reproduce.
 
 ### 100 sequences x 30 bp
 
-This is the scenario where `fastrc` shines brightest -- many short sequences
+This is where you may really want to use `fastrc`: many short sequences
 where per-call overhead matters most.
 
 | Method | Median | vs fastrc |
