@@ -4,12 +4,12 @@
 \name{fastrc-package}
 \alias{fastrc}
 \alias{fastrc-package}
-\title{fastrc: What the Package Does (One Line, Title Case)}
+\title{fastrc: Fast Reverse Complement of DNA and RNA Sequences}
 \description{
-What the package does (one paragraph).
+Fast reverse complement of DNA and RNA sequences using a C++ lookup table for O(1) per-base complement mapping. Supports full IUPAC ambiguity codes, DNA and RNA modes, case preservation, and NA handling. Especially fast for many short sequences such as primers, probes, and k-mers.
 }
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com}
+\strong{Maintainer}: Steven G. Rozen \email{steverozen@pm.me}
 
 }
 \keyword{internal}

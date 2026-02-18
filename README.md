@@ -36,8 +36,9 @@ fast_rc("AUCG", type = "RNA")
 
 ## Benchmarks
 
-Benchmarks were run on a 12th Gen Intel i7-1270P. The package was compiled
-with `-O3 -flto` (the default for installed packages).
+Benchmarks were run on a 12th Gen Intel i7-1270P using R's default
+compilation flags (`-O2`). See `inst/benchmarks/benchmark_revc.R` to
+reproduce.
 
 ### 100 sequences x 30 bp
 
@@ -46,27 +47,37 @@ where per-call overhead matters most.
 
 | Method | Median | vs fastrc |
 |---|---:|---:|
-| **fastrc** | **13 &#181;s** | **1x** |
-| spgs | 621 &#181;s | 48x slower |
-| integer trick | 675 &#181;s | 52x slower |
-| insect | 1,032 &#181;s | 79x slower |
-| Biostrings | 1,579 &#181;s | 121x slower |
-| tktools | 3,351 &#181;s | 258x slower |
-| split/paste | 4,375 &#181;s | 337x slower |
+| **fastrc** | **17 &#181;s** | **1x** |
+| spgs | 619 &#181;s | 36x slower |
+| insect | 1,031 &#181;s | 61x slower |
+| Biostrings | 1,613 &#181;s | 95x slower |
+| tktools | 3,277 &#181;s | 193x slower |
 
 ### 100 sequences x 10,000 bp
 
 | Method | Median | vs fastrc |
 |---|---:|---:|
 | **fastrc** | **1.4 ms** | **1x** |
-| Biostrings | 3.3 ms | 2.3x slower |
+| Biostrings | 3.4 ms | 2.4x slower |
 
 ### 10 sequences x 1,000,000 bp
 
 | Method | Median | vs fastrc |
 |---|---:|---:|
 | **fastrc** | **14.2 ms** | **1x** |
-| Biostrings | 24.0 ms | 1.7x slower |
+| Biostrings | 23.8 ms | 1.7x slower |
+
+### Faster local builds
+
+You can get additional speed by adding optimization flags to your
+`~/.R/Makevars` file:
+
+```
+CXXFLAGS += -O3 -march=native -flto
+```
+
+Then reinstall the package. This typically yields a 10-20% improvement
+on longer sequences.
 
 ## License
 
