@@ -4,3 +4,6 @@
 ^README\.md$
 ^CLAUDE\.md$
 ^\.claude$
+^\.gitignore$
+^\.github$
+^cran-comments\.md$
