@@ -1,6 +1,7 @@
 # fastrc
 
 [![R-CMD-check](https://github.com/steverozen/fastrc/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/steverozen/fastrc/actions/workflows/R-CMD-check.yaml)
+[![pkgdown](https://github.com/steverozen/fastrc/actions/workflows/pkgdown.yaml/badge.svg)](https://steverozen.github.io/fastrc/)
 
 Fast reverse complement of DNA and RNA sequences in R, implemented in C++ via Rcpp.
 
