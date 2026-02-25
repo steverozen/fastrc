@@ -1,5 +1,7 @@
 # fastrc
 
+[![R-CMD-check](https://github.com/steverozen/fastrc/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/steverozen/fastrc/actions/workflows/R-CMD-check.yaml)
+
 Fast reverse complement of DNA and RNA sequences in R, implemented in C++ via Rcpp.
 
 `fastrc` uses a static lookup table for O(1) per-base complement mapping with full IUPAC ambiguity code support. It is **especially useful for reverse complementing many short sequences** (e.g. primers, probes, k-mers, short reads), where per-call overhead dominates and `fastrc` is nearly 100x faster than the implementation
