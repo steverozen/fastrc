@@ -1,0 +1,98 @@
+# fastrc
+
+[![R-CMD-check](https://github.com/steverozen/fastrc/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/steverozen/fastrc/actions/workflows/R-CMD-check.yaml)
+[![pkgdown](https://github.com/steverozen/fastrc/actions/workflows/pkgdown.yaml/badge.svg)](https://steverozen.github.io/fastrc/)
+
+Fast reverse complement of DNA and RNA sequences in R, implemented in
+C++ via Rcpp.
+
+`fastrc` uses a static lookup table for O(1) per-base complement mapping
+with full IUPAC ambiguity code support. It is **especially useful for
+reverse complementing many short sequences** (e.g. primers, probes,
+k-mers, short reads), where per-call overhead dominates and `fastrc` is
+nearly 100x faster than the implementation in `Biostrings`.
+
+## Installation
+
+``` r
+# From GitHub
+devtools::install_github("steverozen/fastrc")
+```
+
+## Usage
+
+``` r
+library(fastrc)
+
+fast_rc("ATCG")
+#> [1] "CGAT"
+
+fast_rc(c("ATCG", "AAGG", NA))
+#> [1] "CGAT" "CCTT" NA
+
+fast_rc("AUCG", type = "RNA")
+#> [1] "CGAU"
+```
+
+## Features
+
+- DNA (A↔︎T) and RNA (A↔︎U) modes
+- Full IUPAC ambiguity code support (M↔︎K, R↔︎Y, S↔︎S, W↔︎W, V↔︎B, H↔︎D, N↔︎N)
+- Case preservation
+- NA handling
+- Vectorized over character vectors
+
+## Benchmarks
+
+Benchmarks were run on a 12th Gen Intel i7-1270P using R’s default
+compilation flags (`-O2`). See `inst/benchmarks/benchmark_revc.R` to
+reproduce.
+
+### 100 sequences x 30 bp
+
+This is where you may really want to use `fastrc`: many short sequences
+where per-call overhead matters most.
+
+| Method     |    Median |   vs fastrc |
+|------------|----------:|------------:|
+| **fastrc** | **17 µs** |      **1x** |
+| spgs       |    619 µs |  36x slower |
+| insect     |  1,031 µs |  61x slower |
+| Biostrings |  1,613 µs |  95x slower |
+| tktools    |  3,277 µs | 193x slower |
+
+### 100 sequences x 10,000 bp
+
+| Method     |     Median |   vs fastrc |
+|------------|-----------:|------------:|
+| **fastrc** | **1.4 ms** |      **1x** |
+| Biostrings |     3.4 ms | 2.4x slower |
+
+### 10 sequences x 1,000,000 bp
+
+| Method     |      Median |   vs fastrc |
+|------------|------------:|------------:|
+| **fastrc** | **14.2 ms** |      **1x** |
+| Biostrings |     23.8 ms | 1.7x slower |
+
+### Faster local builds
+
+You can get additional speed by adding optimization flags to your
+`~/.R/Makevars` file:
+
+    CXXFLAGS += -O3 -march=native -flto
+
+Then reinstall the package. This typically yields a 10-20% improvement
+on longer sequences.
+
+## License
+
+GPL (\>= 3)
+
+# Package index
+
+## All functions
+
+- [`fast_rc()`](https://steverozen.github.io/reference/fast_rc.md) :
+  Fast Reverse Complement of DNA/RNA Sequences
+
