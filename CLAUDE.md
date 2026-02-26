@@ -8,8 +8,8 @@ with code in this repository.
 `fast_rc` is an R package that provides fast reverse complement
 operations for DNA/RNA sequences via Rcpp (C++ integration). The core
 function
-[`fast_rc()`](https://steverozen.github.io/reference/fast_rc.md) uses a
-static lookup table for O(1) complement mapping with full IUPAC
+[`fast_rc()`](https://steverozen.github.io/fastrc/reference/fast_rc.md)
+uses a static lookup table for O(1) complement mapping with full IUPAC
 ambiguity code support.
 
 ## Build and Development Commands
