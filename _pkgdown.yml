@@ -1,1 +1,4 @@
-url: https://steverozen.github.io/fastrc/
+url: https://steverozen.github.io
+template:
+  bootstrap: 5
+

@@ -9,3 +9,4 @@
 **/*.quarto_ipynb
 src/*.o
 src/*.so
+docs

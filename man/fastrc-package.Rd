@@ -8,6 +8,15 @@
 \description{
 Fast reverse complement of DNA and RNA sequences using a 'C++' lookup table for O(1) per-base complement mapping. Supports full IUPAC ambiguity codes, DNA and RNA modes, case preservation, and NA handling. Much faster than other packages for computing reverse complements of many short sequences such as primers, probes, and, k-mers.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://steverozen.github.io/fastrc/}
+  \item \url{https://steverozen.github.io/fastrc/}
+  \item \url{https://github.com}
+}
+
+}
 \author{
 \strong{Maintainer}: Steven G. Rozen \email{steverozen@pm.me}
 

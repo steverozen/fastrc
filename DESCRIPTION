@@ -8,7 +8,7 @@ Description: Fast reverse complement of DNA and RNA sequences using a 'C++'
     ambiguity codes, DNA and RNA modes, case preservation, and NA handling.
     Much faster than other packages for computing reverse complements of
     many short sequences such as primers, probes, and, k-mers.
-URL: https://steverozen.github.io/fastrc/
+URL: https://steverozen.github.io/fastrc/, https://steverozen.github.io/, https://github.com
 License: GPL (>= 3)
 Language: en-US
 Encoding: UTF-8
